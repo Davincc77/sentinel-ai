@@ -1,0 +1,16 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOiA4ODg4LCAidHlwZSI6ICJjdXN0b2RpYWwiLCAia2V5IjogIjB4Mjg5RSJ9",
+    "payload": "eyJkb21haW4iOiAic2VudGluZWwtYWktMjlwLnBhZ2VzLmRldiJ9",
+    "signature": "MHhjYmE..."
+  },
+  "frame": {
+    "version": "1",
+    "name": "SentinelAI",
+    "iconUrl": "https://sentinel-ai-29p.pages.dev/icon.png",
+    "splashImageUrl": "https://sentinel-ai-29p.pages.dev/splash.png",
+    "splashBackgroundColor": "#000000",
+    "buttonTitle": "OPEN_SENTINEL",
+    "webhookUrl": "https://sentinel-ai.enzoc1977.workers.dev/webhook"
+  }
+}

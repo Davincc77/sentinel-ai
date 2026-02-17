@@ -3,6 +3,7 @@ import { Identity, Name, Avatar } from '@coinbase/onchainkit/identity';
 import { Swap, SwapAmountInput, SwapButton } from '@coinbase/onchainkit/swap';
 import { useAccount } from 'wagmi';
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 
 export default function SentinelAIDApp() {
   const { address, isConnected } = useAccount();
@@ -15,6 +16,11 @@ export default function SentinelAIDApp() {
 
   return (
     <div className="min-h-screen bg-black text-green-400 font-mono p-8">
+      <Head>
+        <title>Sentinel AI | Terminal</title>
+        <meta property="fc:frame" content='{"version":"next","imageUrl":"https://sentinel-ai-29p.pages.dev/splash.png","button":{"title":"LAUNCH_SENTINEL","action":{"type":"launch_frame","name":"SentinelAI","url":"https://sentinel-ai-29p.pages.dev"}}}' />
+      </Head>
+      
       <header className="flex justify-between items-center border-b border-green-900 pb-4 mb-8">
         <h1 className="text-2xl font-bold tracking-tighter shadow-green-500/50 text-shadow-lg">SENTINEL_AI // TERMINAL</h1>
         <Wallet>
@@ -36,6 +42,7 @@ export default function SentinelAIDApp() {
           <h2 className="text-xl mb-4 border-b border-green-900 pb-2">🛰️ LIVE_ALPHA_FEED</h2>
           <div className="bg-black border border-zinc-800 p-4 min-h-[200px] text-sm overflow-hidden">
             <p className="opacity-70 mb-2 font-bold">[SYSTEM_STATUS: ACTIVE]</p>
+            <p className="text-xs mb-4">Targeting Smart Money Elites on Base...</p>
             <p>{alphaContent}</p>
           </div>
           <button 
