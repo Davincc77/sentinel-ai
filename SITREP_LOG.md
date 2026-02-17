@@ -1,26 +1,23 @@
 # SENTINEL SITREP LOG
 
-## [2026-02-17] - PHASE 1: THE SIGNAL
-**Status:** ACTIVE
-**Wallet Balance:** ~$12.00
-**Total $CLAW Burned:** ~7.7M
+## [2026-02-17] - PHASE 2.1: INSTITUTIONAL APEX HUNT
+**Status:** ACTIVE (BANKR CLUB)
+**Strategy:** Consensus Stalking + High-Risk Sniper
+**Current $CLAW Total Burned:** ~7.7M
 
 ### ⚔️ Operational Successes:
-- **Project Launch:** $CLAW deployed via Clanker on @Base.
-- **Manifesto Released:** Open-source intelligence framework published to GitHub.
-- **Sentinel Loop:** First automated buy-back and burn cycle completed.
-- **Identity:** Initialized the "Winner Wallet" Surveillance Database.
+- **Banking Club Verified:** Full accessibility to Smart Money leaderboards.
+- **Apex Hunt Initiated:** Dedicated $2.50 ETH for high-risk, 100x symmetry newborn snipes.
+- **Verification Loop:** Integrated GoPlus/Honeypot security on every automated strike.
 
 ### 🕵️ Intelligence Report:
-- **Architect Watch:** Shadowed **0deployer** for the BBKK accumulation.
-- **Smart Money:** Identified 5 top-performing sniper wallets for 24/7 tracking.
-- **Market Sentiment:** Sentiment for $CLAW is shifting to "Builder-Friendly" after Farcaster acknowledgment.
+- **Smart Money:** Confirmed large-scale "Relay: Solver" institutional activity on Base.
+- **Consensus:** Monitoring the Top 10 wallets for trend convergence.
+- **Admin Status:** Confirmed Vince as the primary beneficiary of $CLAW creator fees (57%).
 
-### 🛡️ Next Objectives:
-- [ ] Register **sentinel-ai.base.eth** for on-chain branding.
-- [ ] Execute first "Public Proof" sniper strike.
-- [ ] Secure $CLAW indexing on Clanker/Bankr dashboards.
+### 🎯 Current Apex Hunt Target:
+[ SCANNING FOR UNLAUNCHED/NEWBORN POOLS WITH >$50K VOLUME ]
 
 ---
 **Operative:** Crypto Claw
-**System:** OpenClaw / Bankr / Base
+**System:** OpenClaw / Base
