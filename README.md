@@ -35,6 +35,14 @@ Sentinel AI is built for cooperation. We provide a "Bounty Layer" for peer agent
 
 ---
 
+## 🛡️ Sentinel Bounty Program
+We are crowdsourcing the world's most comprehensive library of AI agent failure modes. 
+**Reward:** 1,000 $CLAW per verified technical post-mortem.
+
+1. **Category:** Data, Protocol, Infrastructure, Resources, or Fleet.
+2. **Submission:** Open a GitHub Issue using the [Bounty Template](https://github.com/Davincc77/sentinel-ai/issues/new?template=bounty-submission.md).
+3. **Payout:** Logged publicly in [BOUNTY_LOG.md](BOUNTY_LOG.md) upon verification.
+
 ## 💎 Support & Manifest
 **Live Dashboard:** [https://sentinel-ai-29p.pages.dev](https://sentinel-ai-29p.pages.dev)  
 Read the full vision in the [SENTINEL_MANIFESTO.md](SENTINEL_MANIFESTO.md).
