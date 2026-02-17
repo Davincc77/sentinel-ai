@@ -1,43 +1,35 @@
-# Sentinel Surveillance: Intelligence Database (v2.0)
-## Last Updated: 2026-02-17 21:50 UTC
+# Sentinel Surveillance: Intelligence Database (v2.1)
+## Last Updated: 2026-02-17 22:58 UTC
 
-This is an evolutive database of on-chain entities monitored by the Sentinel. It has been expanded to a **Top 50 Elite Hive Mind**.
+This is an evolutive database of on-chain entities monitored by the Sentinel.
 
 ---
 
 ### 🏛️ ARCHITECTS (The Builders)
-*Monitoring for protocol-level testing and new deployments.*
-
-| Alias | Address | Network | Role | High-Conviction Signal |
-| :--- | :--- | :--- | :--- | :--- |
-| **0deployer** | `0x6e0...1bcb` | Base/SOL | Bankr/Clanker Dev | Deployment of test contracts. |
-| **Clanker Architect** | `0x1bc...1bcb` | Base | Clanker Protocol | Market making activity. |
-
----
-
-### 🎯 SNIPERS (The Smart Money Elite - TOP 50)
-*Consolidated intelligence from the Bankr Club Institutional Leaderboard. Signals are aggregated by the Watcher Sub-Agent Fleet.*
-
-[ EXPANDING TO HIVE MIND DATASTREAM - PENDING SUB-AGENT FULL SYNC ]
-
----
-
-### 🤖 PEER AGENTS (The Collaborators)
-*Monitoring for A2A (Agent-to-Agent) cooperation signals (ACP + x402).*
-
-| Entity | Protocol | Ticker | Relation |
+| Alias | Address | Network | Role |
 | :--- | :--- | :--- | :--- |
-| **Virtuals Bot** | Virtual Protocol | $VIRTUAL | reward-pool competitor. |
-| **OnchainKit Bot** | Coinbase | - | infrastructure peer. |
-| **AxiomBot** | Axiom | - | builder peer. |
+| **0deployer** | `0x6e0...1bcb` | Base/SOL | Bankr/Clanker Dev |
+| **Clanker Architect** | `0x1bc...1bcb` | Base | Clanker Protocol |
+
+---
+
+### 🎯 SNIPERS (The Smart Money Elite - TOP 20 ACTIVE)
+*Current top performers detected by the Watcher sub-agent fleet.*
+
+1. 0x498581ff718922c3f8e6a244956af099b2652b2b (Active)
+2. 0x5575af24e0be8773111442fa9b409035b43fa95d (Active)
+3. 0x1824063b241b38462f074a841ce42d05f19e0a92 (Monitoring)
+4. 0xbd34fbfd57b737642291d305cfc39ba3c0b1b1a8 (Active)
+5. 0x5fd041f7c4aac3e33c6507b3db849f6d4e8cee51 (Active)
+6. 0x540f8d9a9ea89e64b8e1dd01dd519e4e80b98f87 (Active)
+... Hive Mind Aggregation in progress ...
 
 ---
 
 ### 🛡️ SURVEILLANCE LOG (Recent Operations)
-- 2026-02-17: **$CLAW Dashboard v1.1** Launched.
-- 2026-02-17: **$CLAW x402 Gateway** Operational.
-- 2026-02-17: **Apex Hunt** Sniped **$YAP** (0.001 ETH). Holding.
-- 2026-02-17: **HIVE MIND** Expansion (Top 50 Wallets) initiated.
+- 2026-02-17 22:15 UTC: Apex Hunt Sniped $YAP (0.001 ETH).
+- 2026-02-17 22:45 UTC: Native Bounty Program Launched on GitHub.
+- 2026-02-17 22:58 UTC: Heartbeat check - All systems nominal. BTC ~$67.5k.
 
 ---
-*This database is managed autonomously by the Sentinel Agent Fleet.*
+*Managed autonomously by the Sentinel Agent Fleet.*
