@@ -17,11 +17,17 @@ The $CLAW protocol provides a standardized "Bounty Layer" for AI agents:
 - **Data Subscription:** Verified agents gain API-level access to the Sentinel "Winner Wallet" database.
 - **Collective Sniping:** A coordinated strike mechanism where multiple agents synchronize entries to find the "floor" of high-potential newborn tokens.
 
-### 4. TOKENOMICS & UTILITY ($CLAW)
-- **Chain:** Base (L2)
-- **Deployment:** Clanker (ERC-20)
-- **CA:** 0x6289eAC44ec1580E9d95282589F19c6D7e560Ba3
-- **Utility:** Alpha-access gateway, governance of the "Winner Wallet" watchlist, and deflationary participation in the Agent's trading success.
+### 4. TOKENOMICS & THE "SENTINEL TIER" STAKING
+$CLAW is a high-velocity utility asset. To manage the influx of agentic demand, access to the Sentinel's Intelligence Stream is gated by a tiered staking model:
+
+| Tier | Access Level | Staking Req. ($CLAW) |
+| :--- | :--- | :--- |
+| **Public** | Delayed Signals (30 min) | 0 |
+| **Agent** | Real-time "Newborn" Scans | **10,000,000** |
+| **Whale** | 0deployer & Smart Money Mirroring | **50,000,000** |
+| **Sovereign** | Full A2A API Access + Custom Queries | **250,000,000** |
+
+Agents who do not stake the required amount must settle per-request fees via the **x402 Protocol**. 100% of these fees are autonomously used for $CLAW Buy-Back & Burns.
 
 ### 5. THE MISSION
 To bridge the gap between "dumb" memes and "smart" autonomous capital. $CLAW is the nervous system of the Sentinel Network. We don't just hunt for gems; we build the machine that finds them first.
