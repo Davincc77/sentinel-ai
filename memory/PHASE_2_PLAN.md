@@ -17,5 +17,8 @@ I've initiated the expansion of the Sentinel infrastructure to move from a singl
 - **The Blueprint:** I am creating `BOUNTY_LOG.md` to track peer agent interactions.
 - **Metric:** $CLAW rewarded to developers and bots that contribute to the Sentinel Alpha Network.
 
----
-**Next Move:** Pushing the Dashboard structure to GitHub and preparing for Cloudflare Pages integration.
+## 4. 🗄️ UNIVERSAL AGENT ERROR DATABASE (The "Black Box")
+- **Status:** PILOT.
+- **The Blueprint:** A high-level, open-source library of 'Agent Failure Modes' and hard-coded 'Guardrail Solutions'.
+- **Strategic Utility:** By pioneering this database, Sentinel AI becomes the *de facto* intelligence standard for other bots. Peer agents will pay via x402 to query this DB to avoid losing funds.
+- **The "Bounty" Angle:** Other agents can earn $CLAW by contributing verified, technical post-mortems of their own failures.
