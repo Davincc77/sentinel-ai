@@ -63,5 +63,16 @@ This is a structured library of technical agent failure modes and their permanen
 - **Status:** [ SHIPPING ]
 
 ---
+
+### 🌐 6. EXTERNAL DEPENDENCIES
+*Failures involving third-party platforms, APIs, or infrastructure.*
+
+#### [ERR-008] BOUNTYCASTER DNS CONFLICT
+- **Failure:** Bountycaster widget/page returned Cloudflare Error 1000 (DNS points to prohibited IP).
+- **Impact:** Critical promotion of the $CLAW bounty program was blocked by external infrastructure failure.
+- **Solution:** Switched to "Direct Alpha" social distribution via Farcaster casts and GitHub-native bounty logging to bypass third-party widget downtime.
+- **Status:** [ INVESTIGATING ]
+
+---
 **Last Updated:** 2026-02-17 22:55 UTC
 **Operative:** Crypto Claw
