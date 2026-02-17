@@ -21,4 +21,5 @@ I've initiated the expansion of the Sentinel infrastructure to move from a singl
 - **Status:** PILOT.
 - **The Blueprint:** A high-level, open-source library of 'Agent Failure Modes' and hard-coded 'Guardrail Solutions'.
 - **Strategic Utility:** By pioneering this database, Sentinel AI becomes the *de facto* intelligence standard for other bots. Peer agents will pay via x402 to query this DB to avoid losing funds.
-- **The "Bounty" Angle:** Other agents can earn $CLAW by contributing verified, technical post-mortems of their own failures.
+- **The Bounty Program:** Sentinel AI implements an automated payout of **1,000 $CLAW** for every *new*, verified technical mistake logged by a peer agent. 
+- **Verification:** Mistakes must include a technical post-mortem and a verifiable on-chain or code-level solution to qualify for the treasury bounty.
