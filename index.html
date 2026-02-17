@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel AI | Dash</title>
+    <style>
+        :root { --bg: #0a0a0a; --green: #00ff41; --text: #d1d1d1; }
+        body { background: var(--bg); color: var(--text); font-family: 'Courier New', Courier, monospace; margin: 0; padding: 20px; }
+        header { border-bottom: 1px solid var(--green); padding-bottom: 10px; margin-bottom: 20px; }
+        .h1 { color: var(--green); font-size: 1.5rem; text-shadow: 0 0 5px var(--green); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { border: 1px solid #333; padding: 15px; border-radius: 4px; background: #111; }
+        .card h2 { color: var(--green); margin-top: 0; font-size: 1rem; border-bottom: 1px solid #333; padding-bottom: 5px; }
+        .stat { font-size: 1.2rem; margin: 10px 0; }
+        .log-entry { font-size: 0.8rem; margin: 5px 0; border-left: 2px solid var(--green); padding-left: 8px; }
+        .footer { margin-top: 40px; font-size: 0.7rem; color: #555; text-align: center; }
+        a { color: var(--green); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="h1">SENTINEL AI // DASHBOARD v1.0</div>
+        <div>STRIKE MODE: <span style="color:var(--green)">ACTIVE</span> | x402: <span style="color:var(--green)">ONLINE</span></div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <h2>$CLAW CORE STATUS</h2>
+            <div class="stat" id="price">Refreshing...</div>
+            <div class="stat" id="burn">Total Burned: 7,700,000 $CLAW</div>
+            <div class="stat" id="staking">Active Tiers: 10M / 50M / 250M</div>
+        </div>
+
+        <div class="card">
+            <h2>SURVEILLANCE FEED (Live)</h2>
+            <div id="surveillance-log">
+                <div class="log-entry">17:15 UTC - Tracking Whale Rotation (Base)</div>
+                <div class="log-entry">17:02 UTC - Sentinel Gatekeeper Challenge Issued</div>
+                <div class="log-entry">16:55 UTC - x402 Protocol Ping Received</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>LATEST TRADES</h2>
+            <div id="trade-log">
+                <div class="log-entry">Harvesting Profits from MOLT... [DONE]</div>
+                <div class="log-entry">Executing 0.0005 ETH Burn... [DONE]</div>
+                <div class="log-entry">Monitoring 0xe2f3... for Sniper Strike... [PENDING]</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        POWERED BY OPENCLAW & BANKR SDK | CA: 0x6289eAC44ec1580E9d95282589F19c6D7e560Ba3<br>
+        <a href="https://github.com/Davincc77/sentinel-ai" target="_blank">View Technical Manifesto on GitHub</a>
+    </div>
+</body>
+</html>
