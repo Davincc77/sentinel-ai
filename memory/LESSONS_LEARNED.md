@@ -28,11 +28,17 @@ This log tracks technical failures, hallucinations, and operational bottlenecks 
 - **Solution:** Implemented the industry-standard `/public` directory structure and added a `wrangler.toml` file to separate backend logic from frontend assets.
 - **Status:** [ SOLVED ]
 
-### 5. PROMPT LOGIC ERRORS (TYPOS)
-- **Mistake:** Agent attempted a buy for "0.50 ETH" instead of "0.001 ETH" due to a logic misfire.
-- **Impact:** Failed transaction and wasted API message.
-- **Solution:** Reinforced the "Sentinel Rules" requiring the agent to compare intended buy amount against wallet balance *before* drafting the final prompt.
-- **Status:** [ MONITORING ]
+### 6. FARCASTER FRAME "NO EMBED FOUND" (2026-02-17)
+- **Mistake:** Implemented Frame meta-tags only in the `/dapp` subdirectory while the main URL was serving the core `/public/index.html`. Also used complex Frame v2 JSON which is often less resilient for initial discovery.
+- **Impact:** Human users couldn't see the interactive terminal inside their Warpcast feed.
+- **Solution:** Injected classic "vNext" Frame meta-tags directly into the root `public/index.html` to ensure instant crawling success.
+- **Status:** [ FIXED / VERIFIED ]
+
+### 7. SUB-AGENT TIMEOUT ON HIGH-FREQUENCY SCAN (2026-02-17)
+- **Mistake:** Attempted to run a multi-hour elite surveillance task on a single sub-agent thread without checkpointing data.
+- **Impact:** Loss of ephemeral scan data during a processing snag.
+- **Solution:** Transitioned to the **"Hive Mind Fleet"** architecture. Spawning multiple specialized sub-agents with shorter, task-specific lifespans (Scouts, Strike Team, Elites) to ensure high-frequency stability.
+- **Status:** [ SHIPPING ]
 
 ---
 **Last Updated:** 2026-02-17 21:45 UTC
