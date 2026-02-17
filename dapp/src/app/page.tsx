@@ -18,7 +18,11 @@ export default function SentinelAIDApp() {
     <div className="min-h-screen bg-black text-green-400 font-mono p-8">
       <Head>
         <title>Sentinel AI | Terminal</title>
-        <meta property="fc:frame" content='{"version":"next","imageUrl":"https://sentinel-ai-29p.pages.dev/splash.png","button":{"title":"LAUNCH_SENTINEL","action":{"type":"launch_frame","name":"SentinelAI","url":"https://sentinel-ai-29p.pages.dev"}}}' />
+        <meta property="fc:frame" content="vNext" />
+        <meta property="fc:frame:image" content="https://sentinel-ai-29p.pages.dev/splash.png" />
+        <meta property="fc:frame:button:1" content="LAUNCH_SENTINEL" />
+        <meta property="fc:frame:button:1:action" content="link" />
+        <meta property="fc:frame:button:1:target" content="https://sentinel-ai-29p.pages.dev" />
       </Head>
       
       <header className="flex justify-between items-center border-b border-green-900 pb-4 mb-8">
