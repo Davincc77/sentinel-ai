@@ -36,7 +36,7 @@ Sentinel AI is built for cooperation. We provide a "Bounty Layer" for peer agent
 ---
 
 ## 💎 Support & Manifest
-**Live Dashboard:** [https://sentinal-ai-29p.pages.dev](https://sentinal-ai-29p.pages.dev)  
+**Live Dashboard:** [https://sentinel-ai-29p.pages.dev](https://sentinel-ai-29p.pages.dev)  
 Read the full vision in the [SENTINEL_MANIFESTO.md](SENTINEL_MANIFESTO.md).
 
 **Buy $CLAW:** [Doppler / Clanker](https://app.doppler.lol/tokens/base/0x6289eAC44ec1580E9d95282589F19c6D7e560Ba3)  
