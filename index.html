@@ -1,38 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Sentinel AI | Dash</title>
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel AI | Dash</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Courier New', monospace; }
+    #feed { max-height: 200px; overflow-y: scroll; background: #1f2937; padding: 8px; border-radius: 4px; }
+    button { transition: all 0.3s; }
+  </style>
 </head>
-<body class="bg-gray-900 text-lime-400 p-8 font-mono">
-<h1 class="text-2xl font-bold mb-4">$CLAW CORE STATUS</h1>
-<p id="refreshing">Loading live...</p>
-<p id="burned">Total Burned: 7,700,000 $CLAW</p>
-<p id="tiers">Tiers: 10M / 50M / 250M</p>
-<h2 class="text-xl mt-8 mb-2">SURVEILLANCE FEED (Live)</h2>
-<ul id="feed" class="mb-8"></ul>
-<h2 class="text-xl mb-2">LATEST TRADES</h2>
-<ul id="trades">
-<li>$CONWAY Snipe: tx 0xddfc... (Hold +1.5%)</li>
-</ul>
-<!-- Buy $CLAW Buttons -->
-<div class="bg-orange-900 border-2 border-orange-500 p-6 rounded-lg">
-<h3>🤑 Buy $CLAW & Get Signals</h3>
-<button onclick="buyClaw('Snipe')" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg w-full mb-2 block">Snipe (5-25x)</button>
-<button onclick="buyClaw('Moon')" class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-lg w-full block">Moon (20-100x)</button>
-<p id="buy-status">Connect for swap (mock). Signals unlocked.</p>
-</div>
-<script>
-async function updateDashboard() {
-  try {
-    // Prices
-    const cg = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
-    const cgData = await cg.json();
-    document.getElementById('refreshing').textContent = `BTC $${cgData.bitcoin.usd.toLocaleString()} (${cgData.bitcoin.usd_24h_change.toFixed(2)}%) | ETH $${cgData.ethereum.usd.toLocaleString()} (${cgData.ethereum.usd_24h_change.toFixed(2)}%)`;
-    // BNKR/CONWAY
-    const bnk = await fetch('https://api.dexscreener.com/latest/dex/tokens/0x22aF33FE49fD1Fa80c7149773dDe5890D3c76F3b');
-    const bnkData = await bnk.json();
-    const bPrice = bnkData.pairs[0]?.priceUsd || 'N/A';
-    const bTxns = bnkData.pairs[0]?.txns.h1 || {};
-    document.getElementById('burned').innerHTML = `BNKR <strong>$${bPrice}</strong> | h1 Buys: ${bTxns.buys} Sells: ${bTxns.sells}`;
-    const con = await fetch('https://api.dexscreener.com/latest/dex/tokens/0x86cdd90bc48f7b5
+<body class="bg-gray-900 text-lime-400 p-8">
+  <h1 class="text-3xl font-bold mb-6">$CLAW CORE STATUS</h1>
+  <p id="refreshing" class="text-xl mb-2">Loading live prices...</p>
+  <p id="burned">Total Burned: Loading...</p>
+  <p id="tiers">Active Tiers: 10M / 50M / 250M</p>
+
+  <h2 class="text-2xl mt-12 mb-4">SURVEILLANCE FEED (Live)</h2>
+  <ul id="feed" class="mb-8 border p-4 rounded"></ul>
+
+  <h2 class="text-2xl mb-4">LATEST TRADES</h2>
+  <ul id="trades" class="mb-8">
+    <li>$CONWAY Snipe: tx <a href="https://basescan.org/tx/0xddfc6412b28035b88f1d7c34f4de0d0f93d82e6ab5eb7c8800f5a78231b4c72" target="_blank">0xddfc6412b28035b88f1d7c34f4de0d0f93d82e6ab5eb7c8800f5a78231b4c72</a> (Hold +1.5%)</li>
+  </ul>
+
+  <!-- Buy $CLAW Buttons -->
+  <div class="bg-orange-900 border-2 border-orange-500 p-8 rounded-lg mb-8">
+    <h3 class="text-2xl font-bold mb-6">🤑 Buy $CLAW & Get Signals</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <button onclick="proposeSnipe()" class="bg-blue-600 hover:bg-blue-700 text-white py-4 px-6 rounded-lg w-full font-bold text-lg mb-2 block transition-all duration-300">
+          Snipe Mode (5-25x)
+        </button>
+      </div>
+      <div>
+        <button onclick="proposeMoon()" class="bg-purple-600 hover:bg-purple-700 text-white py-4 px-6 rounded-lg w-full font-bold text-lg mb-2 block transition-all duration-300">
+          Moon Mode (20-100x)
+        </button>
+      </div>
+    </div>
+    <div id="proposal" class="mt-6 p-4 bg-gray-800 rounded-lg text-sm">
+      <p>Click button for live coin proposal + reason/RSI/vol/CA.</p>
+    </div>
+  </div>
+
+  <script>
+    let refreshInterval;
+    async function fetchBaseGem(type = 'new-pairs') {
+      try {
+        const r = await fetch(`https://api.dexscreener.com/latest/dex/${type}/base`);
+        const data = await r.json();
+        const topGem = data.pairs?.[0];
+        if (topGem) {
+          const m5Change = parseFloat(topGem.priceChange?.m5 || 0);
+          const rsiEstimate = m5Change > 0 ? '<50 (oversold, buy signal)' : '50-60 (neutral)';
+          const vol = (parseFloat(topGem.volume?.h24 || 0)).toLocaleString();
+          const reason = type === 'new-pairs' ? 'Fresh launch + vol spike >$1M + early snipers in first blocks—5x sim on pump' : 'Trending + high vol $' + vol + ' + RSI ' + rsiEstimate + ', sniper cluster, MC low—20x potential now';
+          return {
+            name: topGem.baseToken.symbol,
+            ca: topGem.baseToken.address,
+            price: parseFloat(topGem.priceUsd || 0).toFixed(8),
+            vol: vol,
+            rsi: rsiEstimate,
+            reason
+          };
+        }
+      } catch (e) {
+        console.error(e);
+        return { error: 'API lag—retry' };
+      }
+    }
+    async function proposeSnipe() {
+      document.getElementById('proposal').innerHTML = '<p class="text-yellow-400">Scanning live Snipe gems...</p>';
+      const gem = await fetchBaseGem('new-pairs');
+      if (gem.error) {
+        document.getElementById('proposal').innerHTML = '<p class="text-red-400">' + gem.error + '</p>';
+        return;
+      }
+      document.getElementById('proposal').innerHTML = `
+        <h4 class="text-lg font-bold mb-2">Snipe Proposal: $${gem.name}</h4>
+        <p><strong>CA:</strong> <a href="https://dexscreener.com/base/${gem.ca}" target="_blank">${gem.ca.substring(0,8)}...</a></p>
+        <p><strong>Price:</strong> $${gem.price}</p>
+        <p><strong>24h Vol:</strong> $${gem.vol}</p>
+        <p><strong>RSI:</strong> ${gem.rsi}</p>
+        <p><strong>Why now?</strong> <br><span class="text-blue-400">${gem.reason}</span></p>
+        <button onclick="buySim('Snipe', '${gem.ca}', '${gem.price}')" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded mt-2 transition-all duration-300">
+          Sim Buy (Mock Swap)
+        </button>
+      `;
+    }
+    async function proposeMoon() {
+      document.getElementById('proposal').innerHTML = '<p class="text-yellow-400">Scanning live Moon gems...</p>';
+      const gem = await fetchBaseGem('trending');
+      if (gem.error) {
+        document.getElementById('proposal').innerHTML = '<p class="text-red
