@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sentinel AI Dash</title>
+<title>Sentinel AI | Dash</title>
 <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-black text-green-400 p-8">
-<h1>$CLAW CORE STATUS</h1>
-<p>Refreshing...</p>
-<p>Total Burned: 7,700,000 $CLAW</p>
-<p>Active Tiers: 10M / 50M / 250M</p>
-<h2>SURVEILLANCE FEED (Live)</h2>
-<ul>
+<body class="bg-gray-900 text-lime-400 p-8 font-mono">
+<h1 class="text-2xl font-bold mb-4">$CLAW CORE STATUS</h1>
+<p id="refreshing">Refreshing...</p>
+<p id="burned">Total Burned: Loading...</p>
+<p id="tiers">Active Tiers: Loading...</p>
+<h2 class="text-xl mt-8 mb-2">SURVEILLANCE FEED (Live)</h2>
+<ul id="feed" class="mb-8">
 <li>17:15 UTC - Tracking Whale Rotation (Base)</li>
 <li>17:02 UTC - Sentinel Gatekeeper Challenge Issued</li>
 <li>16:55 UTC - x402 Protocol Ping Received</li>
 </ul>
-<h2>Latest Trades</h2>
-<ul>
+<h2 class="text-xl mb-2">Latest Trades</h2>
+<ul id="trades">
 <li>$CONWAY Snipe: tx 0xddfc6412b28035b88f1d7c34f4de0d0f93d82e6ab5eb7c8800f5a78231b4c72 (Hold +1.5%)</li>
 </ul>
 <!-- Buy $CLAW Buttons -->
-<div class="bg-orange-500 p-4 rounded">
-<h3>🤑 Buy $CLAW & Get Signals</h3>
-<button onclick="buy('Snipe')" class="bg-blue-500 text-white p-2 rounded w-full mb-2">Snipe Mode (5-25x)</button>
-<button onclick="buy('Moon')" class="bg-purple-500 text-white p-2 rounded w-full">Moon Mode (20-100x)</button>
-<p id="status"></p>
-<script>
-function buy(mode) {
-  document.getId('status').innerText = mode + ' swap sim: 100 $CLAW! Signals unlocked.';
-}
-fetch('https://api.dexscreener.com/latest/dex/tokens/0x22aF33FE49fD1Fa80c7149773dDe5890D3c76F3b')
-.then(r => r.json()).then(data => {
-  const p = data.pairs[0]?.priceUsd || 'N/A';
-  document.getId('status').innerText += ` Live BNKR $${p}`;
-});
-</script>
+<div class="bg-orange-900 border-2 border-orange-500 p-6 rounded-lg mb-8">
+<h3 class="text-lg font-bold mb-4">🤑 Buy $CLAW & Get Signals</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<button onclick="buyClaw('Snipe')" class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg font-bold">Snipe Mode (5-25x)</button>
+<button onclick="buyClaw('Moon')" class="bg-purple-600 hover:bg-purple-700 text-white p-4 rounded-lg font-bold">Moon Mode (20-100x)</button>
 </div>
+<p id="buy-status" class="mt-4 text-sm italic">Connect wallet for swap (mock). Signals unlocked post-buy.</p>
+</div>
+<script>
+async function updatePrices() {
+  try {
+    // BTC/ETH
+    const cg = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true');
+    const cgData = await cg.json();
+    document.getElementById('refreshing').textContent = `BTC $${cgData.bitcoin.usd} (${cgData.bitcoin.usd_24h_change.toFixed(2)}%) | ETH $${cgData.ethereum.usd} (${cgData.ethereum.usd_24h_change.toFixed(2)}%)`;
+    // BNKR
+    const bnk = await fetch('https://api.dexscreener.com/latest/dex/tokens/0x22aF33FE49fD1Fa80c7149773dDe5890D3c76F3b');
+    const bnkData = await bnk.json();
+    const bPrice = bnkData.pairs[0]?.priceUsd || 'N/A';
+    document.getElementById('burned').textContent = `BNKR $${bPrice} | Burned 7,700,000 $CLAW`;
+    document.getElementById('tiers').textContent = 'Tiers: 10M / 50M / 250M';
+    // CONWAY
+    const con = await fetch('https://api.dexscreener.com/latest/dex/tokens/0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07');
+    const conData = await con.json();
+    const conPrice = conData.pairs[0]?.priceUsd || 'N/A';
+    const trades = document.getElementById('trades');
+    trades.innerHTML += `<li>$CONWAY $${conPrice} (+1.5% Hold)</li>`;
+  } catch(e) {
+    document.getElementById('status').textContent = 'API refresh error (CORS)—live in browser console.';
+  }
+}
+function buyClaw(mode) {
+  const status = document.getElementById('buy-status');
+  status.textContent = mode + ' swap sim: 100 $CLAW! Email opt-in for sniper signals unlocked.';
+}
+updatePrices();
+setInterval(updatePrices, 30000); // 30s live refresh
+</script>
 </body>
 </html>
