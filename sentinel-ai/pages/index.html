@@ -4,14 +4,80 @@
     &lt;meta charset=&quot;UTF-8&quot;&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
     &lt;title&gt;Sentinel AI Dash&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;family=Rajdhani:wght@300;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
     &lt;style&gt;
-        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
-        .header { text-align: center; color: #333; }
-        .loader { text-align: center; color: #666; }
-        .signal { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .signal h3 { margin-top: 0; color: #4CAF50; }
-        .cta { text-align: center; padding: 20px; }
-        .cta a { background: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+        body { 
+            font-family: 'Rajdhani', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); 
+            color: #e0e0e0; 
+            min-height: 100vh;
+        }
+        .header { 
+            text-align: center; 
+            color: #00ffff; 
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 10px #00ffff;
+            margin-bottom: 30px;
+        }
+        .header h1 { 
+            font-size: 2.5em; 
+            margin: 0; 
+            letter-spacing: 2px;
+        }
+        .loader { 
+            text-align: center; 
+            color: #00ff88; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .signal { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1); 
+            border: 1px solid #00ffff;
+            backdrop-filter: blur(10px);
+        }
+        .signal h3 { 
+            margin-top: 0; 
+            color: #ff00ff; 
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 5px #ff00ff;
+            letter-spacing: 1px;
+        }
+        .signal p { 
+            color: #b0b0b0; 
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+        .cta { 
+            text-align: center; 
+            padding: 25px; 
+        }
+        .cta a { 
+            background: linear-gradient(45deg, #00ffff, #ff00ff); 
+            color: #000; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .cta a:hover { 
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.7); 
+            transform: scale(1.05);
+        }
+        #signals p { 
+            color: #00ff88; 
+            font-weight: 500;
+        }
     &lt;/style&gt;
     &lt;script&gt;
         // Mock dynamic data fetch (replace with real API: e.g., fetch('/api/signals') for A2A signals)
@@ -30,33 +96,14 @@
                 { token: '$MAGA', ca: '0x9f4da3a1b4a5b0a2c5d6e7f8g9h0i1j2k3l4m5n6', score: '88%', reason: 'RSI 29, +450% vol $8M, MC $4.2M, 4 early signals' }
             ];
             
-            signalsEl.innerHTML = signals.map(s =&gt; 
+            signalsEl.innerHTML = signalsEl.innerHTML.replace('&lt;p&gt;Top Snipe Signals (A2A Verified):&lt;/p&gt;', signals.map(s =&gt; 
                 `&lt;div class=&quot;signal&quot;&gt;&lt;h3&gt;${s.token} Snipe Signal &lt;/h3&gt;&lt;p&gt;CA: ${s.ca} | Score: ${s.score} | ${s.reason}&lt;/p&gt;&lt;/div&gt;`
-            ).join('');
+            ).join('') + '&lt;p&gt;Top Snipe Signals (A2A Verified):&lt;/p&gt;');
             
             // CTA for interaction (no wallet/tx)
             document.getElementById('cta').innerHTML = '&lt;a href=&quot;#&quot; onclick=&quot;alert(&#39;Ask your agent for snipe execution via A2A!&#39;)&quot;&gt;Request Automated Snipe&lt;/a&gt;';
         });
     &lt;/script&gt;
 &lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;header&quot;&gt;
-        &lt;h1&gt;Sentinel AI | Dash&lt;/h1&gt;
-        &lt;p&gt;Live Signals &amp; Alpha for Base Launches&lt;/p&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&quot;loader&quot;&gt;
-        Loading live $CLAW prices...&lt;br&gt;
-        Total Burned: &lt;span id=&quot;burn&quot;&gt;Loading...&lt;/span&gt;
-        $CLAW Price: &lt;span id=&quot;price&quot;&gt;Loading...&lt;/span&gt;
-    &lt;/div&gt;
-    
-    &lt;div id=&quot;signals&quot;&gt;
-        &lt;p&gt;Top Snipe Signals (A2A Verified):&lt;/p&gt;
-    &lt;/div&gt;
-    
-    &lt;div class=&quot;cta&quot; id=&quot;cta&quot;&gt;
-        // Info-only, no buttons for buys
-    &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
