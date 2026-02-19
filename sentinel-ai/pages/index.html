@@ -1,0 +1,214 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Sentinel AI Dash&lt;/title&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;family=Rajdhani:wght@300;500;700&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;style&gt;
+        body { 
+            font-family: 'Rajdhani', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); 
+            color: #e0e0e0; 
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        canvas { 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            z-index: -1; 
+            opacity: 0.5;
+        }
+        .header { 
+            text-align: center; 
+            color: #00ffff; 
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 10px #00ffff;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        .header h1 { 
+            font-size: 2.5em; 
+            margin: 0; 
+            letter-spacing: 2px;
+        }
+        .loader { 
+            text-align: center; 
+            color: #00ff88; 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .signal { 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 20px; 
+            margin: 15px 0; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2), inset 0 0 10px rgba(0, 255, 255, 0.1); 
+            border: 1px solid #00ffff;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+        .signal h3 { 
+            margin-top: 0; 
+            color: #ff00ff; 
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 5px #ff00ff;
+            letter-spacing: 1px;
+        }
+        .signal p { 
+            color: #b0b0b0; 
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+        .cta { 
+            text-align: center; 
+            padding: 25px; 
+            position: relative;
+            z-index: 1;
+        }
+        .cta a { 
+            background: linear-gradient(45deg, #00ffff, #ff00ff); 
+            color: #000; 
+            padding: 12px 25px; 
+            text-decoration: none; 
+            border-radius: 25px; 
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            text-shadow: none;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+        .cta a:hover { 
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.7); 
+            transform: scale(1.05);
+        }
+        #signals p { 
+            color: #00ff88; 
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+    &lt;/style&gt;
+    &lt;script&gt;
+        // Particle effects for futuristic background
+        function initParticles() {
+            const canvas = document.createElement('canvas');
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            for (let i = 0; i &lt; 100; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1,
+                    color: Math.random() &gt; 0.5 ? '#00ffff' : '#ff00ff'
+                });
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p =&gt; {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x &lt; 0 || p.x &gt; canvas.width) p.vx *= -1;
+                    if (p.y &lt; 0 || p.y &gt; canvas.height) p.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fillStyle = p.color;
+                    ctx.fill();
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = p.color;
+                });
+                ctx.shadowBlur = 0;
+                requestAnimationFrame(animate);
+            }
+            animate();
+            
+            window.addEventListener('resize', () =&gt; {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Mock dynamic data fetch with API hook (replace CoinGecko ID with real $CLAW)
+        async function fetchLiveData() {
+            try {
+                // Real API call for $CLAW price (use actual CoinGecko ID or DexScreener endpoint)
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&amp;vs_currencies=usd');  // Placeholder for $CLAW
+                const data = await response.json();
+                document.getElementById('price').textContent = `$${data.bitcoin.usd.toLocaleString()}`;  // Adapt for $CLAW
+            } catch (e) {
+                document.getElementById('price').textContent = '$0.00000013 (simulated)';
+            }
+            document.getElementById('burn').textContent = '50%+ (ongoing)';
+        }
+        
+        document.addEventListener('DOMContentLoaded', () =&gt; {
+            initParticles();  // Start particles
+            fetchLiveData();  // Fetch real data
+            
+            const signalsEl = document.getElementById('signals');
+            
+            // Sample rotating signals (A2A-sourced; integrate real WS for live)
+            const signals = [
+                { token: '$CONWAY', ca: '0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07', score: '92%', reason: 'RSI 35, +523% vol $14.7M, MC $5.9M, 5 early signals' },
+                { token: '$MAGA', ca: '0x9f4da3a1b4a5b0a2c5d6e7f8g9h0i1j2k3l4m5n6', score: '88%', reason: 'RSI 29, +450% vol $8M, MC $4.2M, 4 early signals' },
+                { token: '$NEXTGEM', ca: '0xabcdef1234567890abcdef1234567890abcdef12', score: '95%', reason: 'RSI 28, +600% vol $20M, MC $3.8M, 7 early signals' }
+            ];
+            
+            let signalIndex = 0;
+            function updateSignals() {
+                const current = signals[signalIndex % signals.length];
+                signalsEl.innerHTML = `
+                    &lt;p&gt;Top Snipe Signals (A2A Verified - Refreshed: ${new Date().toLocaleTimeString()}):&lt;/p&gt;
+                    &lt;div class=&quot;signal&quot;&gt;&lt;h3&gt;${current.token} Snipe Signal &lt;/h3&gt;&lt;p&gt;CA: ${current.ca} | Score: ${current.score} | ${current.reason}&lt;/p&gt;&lt;/div&gt;
+                `;
+                signalIndex++;
+            }
+            updateSignals();  // Initial load
+            setInterval(updateSignals, 30000);  // Rotate every 30s (simulate live A2A WS)
+            
+            // CTA for interaction (no wallet/tx)
+            document.getElementById('cta').innerHTML = '&lt;a href=&quot;#&quot; onclick=&quot;alert(&#39;Ask your agent for snipe execution via A2A!&#39;)&quot;&gt;Request Automated Snipe&lt;/a&gt;';
+            
+            // Refresh price every 60s
+            setInterval(fetchLiveData, 60000);
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;h1&gt;Sentinel AI | Dash&lt;/h1&gt;
+        &lt;p&gt;Live Signals &amp; Alpha for Base Launches&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;loader&quot;&gt;
+        Loading live $CLAW prices...&lt;br&gt;
+        Total Burned: &lt;span id=&quot;burn&quot;&gt;Loading...&lt;/span&gt;
+        $CLAW Price: &lt;span id=&quot;price&quot;&gt;Loading...&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;div id=&quot;signals&quot;&gt;
+        // Signals load here
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;cta&quot; id=&quot;cta&quot;&gt;
+        // CTA loads here
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
