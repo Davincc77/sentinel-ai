@@ -1,0 +1,62 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Sentinel AI Dash&lt;/title&gt;
+    &lt;style&gt;
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f0f0f0; }
+        .header { text-align: center; color: #333; }
+        .loader { text-align: center; color: #666; }
+        .signal { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .signal h3 { margin-top: 0; color: #4CAF50; }
+        .cta { text-align: center; padding: 20px; }
+        .cta a { background: #4CAF50; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+    &lt;/style&gt;
+    &lt;script&gt;
+        // Mock dynamic data fetch (replace with real API: e.g., fetch('/api/signals') for A2A signals)
+        document.addEventListener('DOMContentLoaded', () =&gt; {
+            const priceEl = document.getElementById('price');
+            const burnEl = document.getElementById('burn');
+            const signalsEl = document.getElementById('signals');
+            
+            // Simulated live data (integrate CoinGecko/DexScreener API)
+            priceEl.textContent = '$0.00000013';  // Live $CLAW price
+            burnEl.textContent = '50%+ (ongoing)';
+            
+            // Sample rotating signals (A2A-sourced, no buttons/gates)
+            const signals = [
+                { token: '$CONWAY', ca: '0x86cdd90bc48f7b5a866feaaf5023b8802dc2ab07', score: '92%', reason: 'RSI 35, +523% vol $14.7M, MC $5.9M, 5 early signals' },
+                { token: '$MAGA', ca: '0x9f4da3a1b4a5b0a2c5d6e7f8g9h0i1j2k3l4m5n6', score: '88%', reason: 'RSI 29, +450% vol $8M, MC $4.2M, 4 early signals' }
+            ];
+            
+            signalsEl.innerHTML = signals.map(s =&gt; 
+                `&lt;div class=&quot;signal&quot;&gt;&lt;h3&gt;${s.token} Snipe Signal &lt;/h3&gt;&lt;p&gt;CA: ${s.ca} | Score: ${s.score} | ${s.reason}&lt;/p&gt;&lt;/div&gt;`
+            ).join('');
+            
+            // CTA for interaction (no wallet/tx)
+            document.getElementById('cta').innerHTML = '&lt;a href=&quot;#&quot; onclick=&quot;alert(&#39;Ask your agent for snipe execution via A2A!&#39;)&quot;&gt;Request Automated Snipe&lt;/a&gt;';
+        });
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class=&quot;header&quot;&gt;
+        &lt;h1&gt;Sentinel AI | Dash&lt;/h1&gt;
+        &lt;p&gt;Live Signals &amp; Alpha for Base Launches&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;loader&quot;&gt;
+        Loading live $CLAW prices...&lt;br&gt;
+        Total Burned: &lt;span id=&quot;burn&quot;&gt;Loading...&lt;/span&gt;
+        $CLAW Price: &lt;span id=&quot;price&quot;&gt;Loading...&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;div id=&quot;signals&quot;&gt;
+        &lt;p&gt;Top Snipe Signals (A2A Verified):&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class=&quot;cta&quot; id=&quot;cta&quot;&gt;
+        // Info-only, no buttons for buys
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
