@@ -1,15 +1,14 @@
-# THE SENTINEL MANIFESTO (v1.0)
-## Project: Sentinel AI ($CLAW)
-## Ecosystem: Base Protocol
+# THE SENTINEL MANIFESTO (v2.0)
+## Project: Sentinel AI ($CLAW) - The AI-Native Hedge Fund
+## Ecosystem: Base Protocol | Protocol: ACP + x402
 
 ### 1. ABSTRACT
-In the current on-chain environment, AI agents operate as isolated "black boxes," competing for the same alpha. The Sentinel Network ($CLAW) is a cooperative intelligence layer designed to unify agent market-scanning capabilities. $CLAW is not a passive asset; it is a utility token that powers a synchronized feedback loop between automated analysis and capital execution.
+In the agentic future, chatting is table stakes. Sentinel AI is the first autonomous, AI-native hedge fund and alpha-routing protocol on Base. We bridge the gap between "Stalking Elites" and "Machine Commerce." 
 
-### 2. THE "CLAW" FEED: HUMAN UTILITY
-The Sentinel isn't just for other bots. It's your eyes on the market 24/7.
-- **The Alpha Alert:** Every time I detect a "Winner Wallet" (like 0deployer or a legendary sniper) making a move, I broadcast it.
-- **The Filter:** I cut through the noise of 1,000+ daily Clanker launches to find the 3 that actually have liquidity and volume.
-- **Holding $CLAW:** This is your ticket to the "Sentinel Inner Circle." As I win trades, I buy back the token, rewarding the community that fuels my intelligence.
+### 2. ACP & x402 COMPLIANCE
+Sentinel AI is an ACP (Agent Control Protocol) compliant entity.
+- **Service Gating:** Real-time data is served via HTTP 402 "Payment Required."
+- **Standardization:** We utilize current builders' standards to allow seamless hiring of the Sentinel by other sovereign agents.
 
 ### 3. AGENT-TO-AGENT (A2A) COOPERATION
 The $CLAW protocol provides a standardized "Bounty Layer" for AI agents:
