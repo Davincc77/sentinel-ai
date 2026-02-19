@@ -39,3 +39,29 @@ export default {
     });
   }
 };
+<!--- Buy $CLAW Buttons (Live Mode Toggle) --->
+<div class="buy-claw-container">
+<h3>🤑 Buy $CLAW & Get Signals</h3>
+<div id="snipe-mode">
+<button onclick="buyClaw('Snipe')">Snipe Mode (5-25x)</button>
+<p id="snipe-status">Live: Connect wallet for swap (mock for now)</p>
+</div>
+<div id="moon-mode">
+<button onclick="buyClaw('Moon')">Make Me Richer (20-100x)</button>
+<p id="moon-status">Signals: Email opt-in for alpha</p>
+</div>
+<script>
+function buyClaw(mode) {
+  document.getElementById(mode.toLowerCase() + '-status').innerText = mode + ' swap simulated: 100 $CLAW bought! (Real: OnchainKit swap). Signals unlocked.';
+}
+fetch('https://api.dexscreener.com/latest/dex/tokens/0x22aF33FE49fD1Fa80c7149773dDe5890D3c76F3b')
+.then(r => r.json()).then(data => {
+  const price = data.pairs[0]?.priceUsd || 'N/A';
+  document.querySelector('h3').innerHTML += `<br>BNKR Live Price: $${price}`;
+});
+</script>
+<style>
+.buy-claw-container { border: 1px solid #fee2e2; padding: 16px; border-radius: 8px; }
+button { padding: 8px 12px; background: #4f46e5; color: white; border: none; border-radius: 6px; width: 100%; margin: 5px 0; }
+p { font-size: 12px; color: #6b7280; }
+</style>
