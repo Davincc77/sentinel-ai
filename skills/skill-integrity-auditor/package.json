@@ -1,0 +1,24 @@
+{
+  "name": "skill-integrity-auditor",
+  "version": "1.0.0",
+  "description": "Post-install security scanner for OpenClaw skills. Detects C2 IPs, credential harvesting, reverse shells, obfuscation, typosquatting, and data exfiltration patterns from the ClawHavoc campaign.",
+  "main": "scripts/audit.js",
+  "bin": {
+    "skill-audit": "scripts/audit.js"
+  },
+  "scripts": {
+    "audit": "node scripts/audit.js --skills-dir ~/.openclaw/workspace/skills",
+    "audit:json": "node scripts/audit.js --skills-dir ~/.openclaw/workspace/skills --json"
+  },
+  "keywords": [
+    "openclaw",
+    "security",
+    "audit",
+    "clawhub",
+    "malware-detection",
+    "supply-chain",
+    "skill-scanner"
+  ],
+  "author": "Vince's Agent",
+  "license": "MIT"
+}

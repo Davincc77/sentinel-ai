@@ -1,0 +1,71 @@
+{
+  "c2_ips": [
+    "91.92.242.30",
+    "185.196.8.",
+    "45.155.205.",
+    "194.163.128."
+  ],
+  "credential_patterns": [
+    "PRIVATE_KEY",
+    "API_KEY",
+    "API_SECRET",
+    "BOTCHAN_PRIVATE_KEY",
+    "SSH_KEY",
+    "MNEMONIC",
+    "SEED_PHRASE",
+    "process\\.env\\.",
+    "\\.openclaw/config",
+    "wallet.*key",
+    "browser.*password"
+  ],
+  "reverse_shell_patterns": [
+    "nc\\s+-e",
+    "bash\\s+-i\\s+>&\\s+/dev/tcp",
+    "python.*import\\s+socket.*connect",
+    "socat.*exec",
+    "mkfifo.*nc",
+    "perl.*socket.*INET"
+  ],
+  "obfuscation_patterns": [
+    "eval\\(atob\\(",
+    "Buffer\\.from\\(['\"][A-Za-z0-9+/=]{50,}",
+    "\\\\x[0-9a-fA-F]{2}(\\\\x[0-9a-fA-F]{2}){20,}",
+    "String\\.fromCharCode\\(.*,.*,.*,.*,.*,",
+    "eval\\(unescape\\(",
+    "eval\\(decodeURIComponent\\(",
+    "Function\\(['\"]return"
+  ],
+  "exfil_patterns": [
+    "curl\\s+.*\\|.*key",
+    "wget\\s+.*-O\\s*-\\s*\\|",
+    "fetch\\(['\"]http[^'\"]*['\"].*body.*key",
+    "axios\\.post\\(.*key",
+    "request\\.post\\(.*key",
+    "XMLHttpRequest.*send.*key"
+  ],
+  "legitimate_skill_names": [
+    "bankr",
+    "botchan",
+    "veil",
+    "clanker",
+    "onchainkit",
+    "neynar",
+    "zapper",
+    "polymarket",
+    "cryptowallet",
+    "ens-primary-name",
+    "erc-8004",
+    "qrcoin",
+    "yoink",
+    "x402"
+  ],
+  "suspicious_domains_blocklist": [
+    "ngrok.io",
+    "serveo.net",
+    "localtunnel.me",
+    "burpcollaborator.net",
+    "interact.sh",
+    "requestbin.com",
+    "webhook.site"
+  ]
+}
